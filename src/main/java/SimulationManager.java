@@ -90,6 +90,9 @@ public class SimulationManager extends Thread{
         }
     }
 
+    /**
+     * Generate each client with random values for arrival time and processing time.
+     */
     public void generateTasks(){
 
         int arrivalTime, processingTime;
@@ -101,6 +104,12 @@ public class SimulationManager extends Thread{
         }
     }
 
+    /**
+     * Generate a random integer in a given range.
+     * @param min minimum possible value
+     * @param max maximum possible value
+     * @return return the random integer.
+     */
     public static int generateRandomNo(int min, int max){
         return (int) ((Math.random() * ((max - min) + 1)) + min);
     }

@@ -8,6 +8,11 @@ public class Scheduler {
     private int maxNoServers;
     private int maxTasksPerServer;
 
+    /**
+     * Constructor to create the scheduler and the threads for each queue.
+     * @param maxNoServers Number of queue
+     * @param maxTasksPerServer Number of clients
+     */
     public Scheduler(int maxNoServers, int maxTasksPerServer){
         this.servers = new ArrayList<Server>(maxNoServers);
         this.maxNoServers = maxNoServers;
@@ -27,6 +32,10 @@ public class Scheduler {
         t.start();
     }
 
+    /**
+     * Find the queue with the lowest waiting time and add the task to it.
+     * @param t Task to be added to the corresponding queue.
+     */
     public void dispatchTask(Task t){
         int globalMin = Integer.MAX_VALUE;
         int localIndex = 0, globalIndex = 0;
@@ -42,6 +51,9 @@ public class Scheduler {
         servers.get(globalIndex).addTask(t);
     }
 
+    /**
+     * This method prints in the output file the status of each queue and the clients waiting.
+     */
     public void getServerStatus(){
         int i = 0;
         try{
